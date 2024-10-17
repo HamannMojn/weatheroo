@@ -1,15 +1,20 @@
 import axios from "axios";
 import { handleError } from "../../Utilities/Error/HandleError";
+import { WeatherResponse } from "../../Models/WeatherTypes";
 
-const api_key = process.env.API_KEY;
-const api_url = `https://api.weatherapi.com/v1/forecast.json?key=${api_key}`;
-
-export const weatherGetForecast = async (city:string, days:number, ) => {
-    try{
-        let requestUrl = api_url + `&q=${city}&days=${days}`;
-        const data = await axios.get(requestUrl)
-        return data;
-    } catch(error){
-        handleError(error);
-    }
-}
+export const weatherGetForecast = async () => {
+  const {
+    REACT_APP_API_KEY,
+    REACT_APP_DESTINATION_LONGITUDE,
+    REACT_APP_DESTINATION_LATTITUDE,
+  } = process.env;
+  console.log(process.env)
+  const api_url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${REACT_APP_DESTINATION_LATTITUDE}%2C${REACT_APP_DESTINATION_LONGITUDE}?unitGroup=metric&include=days%2Ccurrent&key=${REACT_APP_API_KEY}&contentType=json`;
+  try {
+    let requestUrl = api_url;
+    const data = await axios.get<WeatherResponse>(requestUrl);
+    return data;
+  } catch (error) {
+    handleError(error);
+  }
+};
