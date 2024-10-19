@@ -1,6 +1,7 @@
 import axios from "axios";
 import { handleError } from "../../Utilities/Error/HandleError";
 import { WeatherResponse } from "../../Models/WeatherTypes";
+import { FormatDate, AddDays } from "../../Utilities/FormatDate/FormatDate";
 
 export const weatherGetForecast = async () => {
   const {
@@ -8,8 +9,13 @@ export const weatherGetForecast = async () => {
     REACT_APP_DESTINATION_LONGITUDE,
     REACT_APP_DESTINATION_LATTITUDE,
   } = process.env;
-  console.log(process.env)
-  const api_url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${REACT_APP_DESTINATION_LATTITUDE}%2C${REACT_APP_DESTINATION_LONGITUDE}?unitGroup=metric&include=days%2Ccurrent&key=${REACT_APP_API_KEY}&contentType=json`;
+
+  const startDate = new Date()
+  const endDate = AddDays(new Date(), 6);
+  const startDateString = FormatDate(startDate);
+  const endDateString = FormatDate(endDate);
+
+  const api_url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${REACT_APP_DESTINATION_LATTITUDE}%2C${REACT_APP_DESTINATION_LONGITUDE}/${startDateString}/${endDateString}?unitGroup=metric&include=days%2Ccurrent&key=${REACT_APP_API_KEY}&contentType=json`;
   try {
     let requestUrl = api_url;
     const data = await axios.get<WeatherResponse>(requestUrl);

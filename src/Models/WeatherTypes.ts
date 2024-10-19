@@ -8,6 +8,7 @@ export interface WeatherResponse {
   tzoffset: number;
   days: DayWeather[];
   currentConditions: CurrentConditions;
+  description: string;
 }
 
 export interface DayWeather {
@@ -19,6 +20,8 @@ export interface DayWeather {
   visibility: number;
   conditions: string;
   description: string;
+  icon: string;
+  precipprob: number;
 }
 
 export interface CurrentConditions {
@@ -30,4 +33,6 @@ export interface CurrentConditions {
   pressure: number;
   visibility: number;
   conditions: string;
+  icon: string;
+  precipprob: number;
 }
