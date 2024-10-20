@@ -7,11 +7,13 @@ import "./CurrentConditionsComponent.css";
 interface Props {
   currentConditions: CurrentConditions;
 }
-
+//CurrentCondition compontent to show the current weather condition based on the forecast 
 
 const CurrentConditionsComponent: React.FC<Props> = ({
   currentConditions: CurrentConditions,
 }) => {
+  
+  //UseTemperature from TemperatureContext to know if user wants celsius or fahrenheit.
   const { isCelsius } = useTemperature();
   return (
       <article className="box">

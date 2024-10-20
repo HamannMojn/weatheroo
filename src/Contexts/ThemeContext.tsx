@@ -15,6 +15,7 @@ const useTheme = () => {
   return context;
 };
 
+
 const ThemeProvider = ({ children, ...props }: { children: ReactNode }) => {
     const htmlTag = document.querySelector("html");
   const [isLightTheme, setIsLightTheme] = useState(true);
@@ -23,6 +24,8 @@ const ThemeProvider = ({ children, ...props }: { children: ReactNode }) => {
   };
   
   useEffect(() => {
+    //PicoCSS allows you to change the theme of the page by setting the "data-theme" attribute of the root html-element.
+    //this hook just makes sure that all loaded pages are in sync with the state of isLightTheme
     if (htmlTag) {
       if (isLightTheme) {
         htmlTag.setAttribute("data-theme", "light");

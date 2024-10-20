@@ -11,6 +11,7 @@ const WeatherIcon: React.FC<Props> = ({type}) => {
     useEffect(() => {
         const loadIcon = async () => {
              // Dynamically import the SVG file based on the `type` prop
+             //themeName decides if we import the colored icons or monochrome icons
              const icon = await import(`../../Icons/${themeName}/${type}.svg`);
              setIcon(icon.default); // Set the icon once it's loaded
           };

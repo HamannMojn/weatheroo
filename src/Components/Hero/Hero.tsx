@@ -5,6 +5,7 @@ interface prop {
     address: string,
 }
 
+//Hero to show general info and catch the eye
 const Hero: React.FC<prop> = ({description, address}) => {
   return (
     <hgroup>

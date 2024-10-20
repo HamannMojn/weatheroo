@@ -3,6 +3,7 @@ import Logo from "../Logo/Logo";
 import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 
 const Navbar = () => {
+  //UseTemperature from TemperatureContext to allow the user to toggle what unit they want to be shown
   const { isCelsius, toggleTemperatureUnit } = useTemperature();
     const unit = isCelsius ? "Celcius" : "Fahrenheit"
 

@@ -6,7 +6,6 @@ import CurrentConditionsComponent from "../../Components/CurrentConditions/Curre
 import "./HomePage.css";
 import Hero from "../../Components/Hero/Hero";
 import { GetLocation } from "../../Services/WeatherService/GeoCodeService";
-import Spinner from "../../Components/Spinner/Spinner";
 
 const HomePage = () => {
   //UseState to handle state for data to be passed to props.

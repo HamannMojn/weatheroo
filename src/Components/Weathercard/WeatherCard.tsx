@@ -11,9 +11,13 @@ interface prop {
   key: string;
 }
 
+
 const WeatherCard: React.FC<prop> = ({ day }) => {
   const weekday = GetWeekDay(day.datetime);
+  //useTemperature to either calculate temperature from celsius. Either way the GetTemperature method adds correct unit
   const { isCelsius } = useTemperature();
+
+  //WeatherIcon component dynamically loads correct Icon based on what weather the api returns.
 
   return (
     <article id={day.datetime} key={day.datetime}>
@@ -28,12 +32,12 @@ const WeatherCard: React.FC<prop> = ({ day }) => {
           </ul>
           <ul>
             <li>
-              <span>Temp.</span>
+              <u>Temp.</u>
               <br />
               <span>{GetTemperature(day.temp, isCelsius)}</span>
             </li>
             <li>
-              <span>Humidity:</span>
+              <u>Humidity:</u>
               <br />
               <span>{day.humidity}%</span>
             </li>
@@ -50,13 +54,13 @@ const WeatherCard: React.FC<prop> = ({ day }) => {
         <nav>
           <ul>
             <li>
-              <span>Chance of rain:</span> <br />
+              <u>Chance of rain:</u> <br />
               <span>{day.precipprob}%</span>
             </li>
           </ul>
           <ul>
             <li>
-              <span>Windspeed:</span>
+              <u>Windspeed:</u>
               <br />
               <span>{day.windspeed}</span>
             </li>
@@ -65,7 +69,7 @@ const WeatherCard: React.FC<prop> = ({ day }) => {
       </section>
       <section>
         <div className="description">
-          <span>{day.description}</span>
+          <strong>{day.description}</strong>
         </div>
       </section>
     </article>

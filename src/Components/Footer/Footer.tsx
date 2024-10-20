@@ -1,9 +1,7 @@
-import React from "react";
 import Logo from "../Logo/Logo";
 
-type Props = {};
-
-const Footer = (props: Props) => {
+//Simple footer to display resources and links
+const Footer = () => {
   return (
     <footer>
       <hr />

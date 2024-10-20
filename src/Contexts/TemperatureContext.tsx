@@ -6,6 +6,7 @@ interface TemperatureContextType {
   }
 const TemperatureContext = createContext<TemperatureContextType | undefined>(undefined);
 
+//Lets components within the context provider get the state of the context
 const useTemperature = () => {
     const context = useContext(TemperatureContext);
     if (!context) {
@@ -15,7 +16,7 @@ const useTemperature = () => {
   };
 
 
-
+//Setup hooks and toogle methods for ContextProvider
 const TemperatureProvider = ({ children, ...props }: { children: ReactNode }) => {
   const [isCelsius, setIsCelsius] = useState(true);
   const toggleTemperatureUnit = () => {
