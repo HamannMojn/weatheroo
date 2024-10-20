@@ -1,4 +1,4 @@
-###WeatheRoo practice app
+### `WeatheRoo practice app`
 For the app to run, you will need the .env file with keys and coordinates. If you have not received an e-mail from me with this file, you can get your own keys from
 
 https://www.visualcrossing.com/
