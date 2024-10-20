@@ -1,8 +1,14 @@
-# Getting Started with Create React App
+###WeatheRoo practice app
+For the app to run, you will need the .env file with keys and coordinates. If you have not received an e-mail from me with this file, you can get your own keys from
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://www.visualcrossing.com/
 
-## Available Scripts
+And
+
+https://developers.google.com/maps/
+
+And some longitude and lattitude coordinates.
+
 
 In the project directory, you can run:
 
