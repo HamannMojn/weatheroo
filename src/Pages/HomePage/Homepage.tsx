@@ -1,63 +1,55 @@
 import React, { useState, useEffect } from "react";
-import { weatherGetForecast } from "../../Services/WeatherService/WeatherService";
-import { CurrentConditions, DayWeather } from "../../Models/WeatherTypes";
+import { GetWeatherForecast } from "../../Services/WeatherService/WeatherService";
+import { defaultWeatherResponse, WeatherResponse } from "../../Models/WeatherTypes";
 import WeatherList from "../../Components/WeatherList/WeatherList";
 import CurrentConditionsComponent from "../../Components/CurrentConditions/CurrentConditionsComponent";
 import "./HomePage.css";
 import Hero from "../../Components/Hero/Hero";
+import { GetLocation } from "../../Services/WeatherService/GeoCodeService";
+import Spinner from "../../Components/Spinner/Spinner";
 
 const HomePage = () => {
   //UseState to handle state for data to be passed to props.
-  const defaultCondition = {
-    conditions: "",
-    datetime: "",
-    feelslike: 10,
-    humidity: 20,
-    pressure: 80,
-    temp: 20,
-    visibility: 100,
-    windspeed: 100,
-    icon: 'cloudy',
-    precipprob: 0
-  };
-  const [currentConditions, setCurrentConditions] = useState<CurrentConditions>(defaultCondition);
-  const [forecast, setForecast] = useState<DayWeather[]>([]);
-  const [description, setDescription] = useState<string>("");
+  const [weatherResponse, setWeatherResponse] = useState<WeatherResponse>(defaultWeatherResponse);
+  const [formattedAddress, setFormattedAddress] = useState<string>("");
 
   //UseEffect to call API on load
   useEffect(() => {
     //Async calls in useEffect has to be in its own method
     const getWeatherInit = async () => {
-      const result = await weatherGetForecast();
+      const result = await GetWeatherForecast();
       let data = result?.data;
-      console.log(data);
-      //Make sure conditions are not undefined
-      if (data?.currentConditions !== undefined) {
-        setCurrentConditions(data.currentConditions);
-      }
-      //Same with forecasts
-      let forecasts = data?.days;
-      if (Array.isArray(forecasts)) {
-        setForecast(forecasts);
-      }
       if(data !== undefined){
-        setDescription(data.description)
+        setWeatherResponse(data);
       }
     };
     getWeatherInit();
+    const getLocationData = async () => {
+      const result = await GetLocation();
+      
+      let data = result?.data;
+      if(data !== undefined){
+        let result = data.results[0];
+        let address = result.formatted_address;
+        setFormattedAddress(address);
+      }
+    };
+    getLocationData();
   }, []);
+
   return (
     <>
       <main className="container">
         <section className="hero">
-          <Hero description={description}/>
+        <Hero description={weatherResponse.description} address={formattedAddress}/>
+          
         </section>
         <section className="current-conditions">
-          <CurrentConditionsComponent currentConditions={currentConditions}/>
+          <CurrentConditionsComponent currentConditions={weatherResponse.currentConditions}/>
           </section>
         <section className="weather-list">
           <WeatherList
-            forecasts={forecast}
+            forecasts={weatherResponse.days}
           />
         </section>
       </main>

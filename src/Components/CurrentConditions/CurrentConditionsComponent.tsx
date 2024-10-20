@@ -13,7 +13,6 @@ const CurrentConditionsComponent: React.FC<Props> = ({
   currentConditions: CurrentConditions,
 }) => {
   const { isCelsius } = useTemperature();
-  console.log(CurrentConditions);
   return (
       <article className="box">
         <hgroup>

@@ -3,7 +3,7 @@ import { handleError } from "../../Utilities/Error/HandleError";
 import { WeatherResponse } from "../../Models/WeatherTypes";
 import { FormatDate, AddDays } from "../../Utilities/FormatDate/FormatDate";
 
-export const weatherGetForecast = async () => {
+export const GetWeatherForecast = async () => {
   const {
     REACT_APP_API_KEY,
     REACT_APP_DESTINATION_LONGITUDE,

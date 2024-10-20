@@ -7,6 +7,6 @@ const GetCelsius = (temperature: number) => {
 }
 
 const GetFahrenheit = (temperature: number) => {
-    let fahrenheit = (temperature * 9/5)+32;
+    let fahrenheit = Math.round((temperature * 9/5)+32);
     return fahrenheit + "F°";
 }

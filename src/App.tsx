@@ -1,9 +1,9 @@
 import { Outlet } from "react-router";
-import { ToastContainer } from "react-toastify";
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 import { TemperatureProvider } from "./Contexts/TemperatureContext";
 import { ThemeProvider } from "./Contexts/ThemeContext";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <TemperatureProvider>
           <Navbar />
           <Outlet />
-          <ToastContainer />
+          <Footer />
         </TemperatureProvider>
       </ThemeProvider>
     </>

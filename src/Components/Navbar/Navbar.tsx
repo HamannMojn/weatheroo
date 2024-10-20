@@ -1,4 +1,5 @@
 import { useTemperature } from "../../Contexts/TemperatureContext";
+import Logo from "../Logo/Logo";
 import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 
 const Navbar = () => {
@@ -10,6 +11,9 @@ const Navbar = () => {
     <header className="container">
       <nav>
         <ul>
+          <li>
+          <Logo />
+          </li>
           <li>
             <hgroup>
               <h2>
