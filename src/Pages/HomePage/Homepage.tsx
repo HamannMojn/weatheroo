@@ -26,13 +26,16 @@ const HomePage = () => {
 
   //UseEffect to call API on load
   useEffect(() => {
+    //Async calls in useEffect has to be in its own method
     const getWeatherInit = async () => {
       const result = await weatherGetForecast();
       let data = result?.data;
       console.log(data);
+      //Make sure conditions are not undefined
       if (data?.currentConditions !== undefined) {
         setCurrentConditions(data.currentConditions);
       }
+      //Same with forecasts
       let forecasts = data?.days;
       if (Array.isArray(forecasts)) {
         setForecast(forecasts);

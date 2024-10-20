@@ -15,7 +15,7 @@ export const weatherGetForecast = async () => {
   const startDateString = FormatDate(startDate);
   const endDateString = FormatDate(endDate);
 
-  const api_url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${REACT_APP_DESTINATION_LATTITUDE}%2C${REACT_APP_DESTINATION_LONGITUDE}/${startDateString}/${endDateString}?unitGroup=metric&include=days%2Ccurrent&key=${REACT_APP_API_KEY}&contentType=json`;
+  const api_url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${REACT_APP_DESTINATION_LATTITUDE}%2C${REACT_APP_DESTINATION_LONGITUDE}/${startDateString}/${endDateString}?unitGroup=metric&key=${REACT_APP_API_KEY}&contentType=json`;
   try {
     let requestUrl = api_url;
     const data = await axios.get<WeatherResponse>(requestUrl);

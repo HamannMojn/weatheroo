@@ -3,15 +3,18 @@ import { ToastContainer } from "react-toastify";
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 import { TemperatureProvider } from "./Contexts/TemperatureContext";
+import { ThemeProvider } from "./Contexts/ThemeContext";
 
 function App() {
   return (
     <>
-      <TemperatureProvider>
-        <Navbar />
-        <Outlet />
-        <ToastContainer />
-      </TemperatureProvider>
+      <ThemeProvider>
+        <TemperatureProvider>
+          <Navbar />
+          <Outlet />
+          <ToastContainer />
+        </TemperatureProvider>
+      </ThemeProvider>
     </>
   );
 }

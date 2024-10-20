@@ -1,4 +1,5 @@
 import { useTemperature } from "../../Contexts/TemperatureContext";
+import ThemeSwitcher from "../ThemeSwitcher/ThemeSwitcher";
 
 const Navbar = () => {
   const { isCelsius, toggleTemperatureUnit } = useTemperature();
@@ -16,6 +17,9 @@ const Navbar = () => {
               </h2>
               <p>Weather Reports for Developers in Aarhus</p>
             </hgroup>
+          </li>
+          <li>
+            <ThemeSwitcher />
           </li>
         </ul>
         <ul>

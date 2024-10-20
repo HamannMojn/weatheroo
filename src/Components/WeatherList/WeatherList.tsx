@@ -1,12 +1,14 @@
 import React from 'react'
 import { DayWeather} from "../../Models/WeatherTypes";
 import WeatherCard from '../Weathercard/WeatherCard';
+import './WeatherList.css';
 
 interface prop{
     forecasts: DayWeather[]
 }
 
 const WeatherList : React.FC<prop> =  ({forecasts}) => {
+  forecasts = forecasts.slice(1);
   return (
     <div className='grid'>
         {
